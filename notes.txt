@@ -1,0 +1,35 @@
+
+Vore kul att jobba TDD.
+
+Kravspecifikation
+● När användaren söker på en stad ska antalet 
+   invånare hämtas dynamiskt och visas.
+● När användaren söker på ett land ska de städer 
+   med flest invånare visas och sorteras utifrån 
+   invånarantal.
+● När användaren sökt på ett land, ska de städer 
+   som dyker upp gå att klicka påvarefter man får 
+   fram invånarantalet för den staden.
+● Det ska tydligt visas för användaren när 
+   applikationen laddar innehåll.
+● Olika typer av fel som kan uppstå ska visas för 
+   användaren, t.ex. om en stad inte finns
+
+
+=== TODO ===
+> Utforska API
+http://www.geonames.org/export/geonames-search.html
+
+> Plan för sidans implementering
+- Hur många sidor? 
+- Hur många states? 
+
+
+=== Länkar ===
+
+API
+http://www.geonames.org/export/geonames-search.html
+
+About using create-react-app
+https://reactjs.org/docs/create-a-new-react-app.html
+
