@@ -1,0 +1,41 @@
+html {
+  font-size: 100%;
+}
+
+header {
+  margin-top: 15vh;
+}
+
+h1 {
+  font: 2rem verdana;
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  height: 100vh;
+  width: fit-content;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10vh;
+}
+
+.start-button {
+  width: 30vw;
+  height: 7rem;
+  margin: 0.2rem;
+  border: 2px solid darkslategrey;
+  font: 1.2rem verdana;
+  background-color: white;
+}
+
+.start-button:hover {
+  border: 2px solid skyblue;
+}
