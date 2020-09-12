@@ -22,7 +22,39 @@ http://www.geonames.org/export/geonames-search.html
 
 > Plan för sidans implementering
 - Hur många sidor? 
-- Hur många states? 
+=> Start view
+ - Title, two buttons 
+=> Search view
+ - Title, description, search field, search button
+=> list view 
+ - Title, country name (description), list of results
+=> City details
+ - Title, city name (description), poulation box
+
+What if several cities match the search?
+-> Go to list view.
+Error?
+-> Stay on search view, show error. 
+
+=> Loading screen/icon.
+
+Components: 
+- Title 
+- description field
+- (search field)
+- (error box)
+- (search button)
+- result list
+- population box
+
+
+Props to pass down.
+Start -> Search 
+- Search type
+Search -> List
+- Results list (With name and population for each)
+Search | List -> City details
+- City (name and population)
 
 
 === Länkar ===
