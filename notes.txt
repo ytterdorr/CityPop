@@ -17,7 +17,12 @@ Kravspecifikation
 
 
 === TODO ===
-> Utforska API
+
+=> Figure out how to pass the result array?
+- Using state and props.navigate
+https://reach.tech/router/api/RouteComponent
+
+=> Utforska API
 http://www.geonames.org/export/geonames-search.html
 
 > Plan för sidans implementering
