@@ -39,8 +39,28 @@ h1 {
 .description {
   margin-top: 1rem;
   font: 1.2rem Verdana;
+  margin-bottom: 0.5rem;
 }
 
 .start-button:hover {
   border: 2px solid skyblue;
 }
+
+.small-text {
+  font-size: 0.5rem;
+}
+
+.population-display {
+  width: 12rem;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.centered-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+

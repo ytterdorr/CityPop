@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import StartView from "./views/StartView";
 import SearchView from "./views/SearchView";
+import CityView from "./views/CityView";
 
 import "./css/reset.css";
 import "./css/main.css";
@@ -21,16 +22,16 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/">
-              <StartView></StartView>
+              <StartView />
             </Route>
             <Route
               path="/search"
               render={(props) => <SearchView {...props}></SearchView>}
             ></Route>
             <Route
-              path="/city"
+              path="/cityPop"
             >
-
+              <CityView />
             </Route>
 
             <NotFound default></NotFound>
