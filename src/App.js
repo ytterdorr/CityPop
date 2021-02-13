@@ -1,8 +1,8 @@
 import React from "react";
 // import { Router } from "@reach/router";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import StartView from "./components/StartView";
-import SearchView from "./components/SearchView";
+import StartView from "./views/StartView";
+import SearchView from "./views/SearchView";
 
 import "./css/reset.css";
 import "./css/main.css";
@@ -27,6 +27,11 @@ function App() {
               path="/search"
               render={(props) => <SearchView {...props}></SearchView>}
             ></Route>
+            <Route
+              path="/city"
+            >
+
+            </Route>
 
             <NotFound default></NotFound>
           </Switch>

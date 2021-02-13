@@ -1,11 +1,14 @@
 import React from "react";
 import "../css/searchView.css";
+import { useHistory } from "react-router-dom";
 
+window.city = "textCity"
 const SearchView = (props) => {
   const { searchType } = props.location.state;
+  const history = useHistory();
 
-  const displayCity = (cityObj) => {
-    console.log(cityObj);
+  const displayCity = (searchWord) => {
+    history.push(`/CityView?city=${searchWord}`)
   };
 
   const citySearch = (searchWord) => {
@@ -17,10 +20,17 @@ const SearchView = (props) => {
     fetch(query)
       .then((result) => result.json())
       .then((result) => {
+        // Check if we got result
         if (result.geonames.length > 0) {
-          displayCity(result.geonames[0]);
+          // Navigate to cityview
+          console.log(result);
+          let cityName = result.geonames[0].toponymName;
+          history.push(`/CityView?city=${cityName}`)
         } else {
           // Display error
+          let errorBox = document.querySelector("#error-box")
+          errorBox.innerHTML = `Could not find city: ${searchWord}`;
+
         }
       });
   };
@@ -40,6 +50,14 @@ const SearchView = (props) => {
       console.log(`[handleSearch]: Unknown search type '${searchType}'`);
     }
   };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  }
+
+
   return (
     <div className="search-container">
       <div className="description">{`SEARCH BY ${searchType.toUpperCase()}`}</div>
@@ -49,7 +67,9 @@ const SearchView = (props) => {
         name="search-field"
         id="search-field"
         placeholder={`Enter a ${searchType}`}
+        onKeyDown={handleKeyDown}
       ></input>
+      <div id="error-box"></div>
       <button type="button" id="search-button" onClick={handleSearch}>
         <i className="fas fa-search"></i>
       </button>
