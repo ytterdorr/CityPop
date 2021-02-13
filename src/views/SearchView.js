@@ -1,15 +1,12 @@
 import React from "react";
 import "../css/searchView.css";
 import { useHistory } from "react-router-dom";
+import DescriptionLine from "../components/DescriptionLine";
 
 window.city = "textCity"
 const SearchView = (props) => {
   const { searchType } = props.location.state;
   const history = useHistory();
-
-  const displayCity = (searchWord) => {
-    history.push(`/CityView?city=${searchWord}`)
-  };
 
   const citySearch = (searchWord) => {
     // How to filter correctly?
@@ -25,7 +22,7 @@ const SearchView = (props) => {
           // Navigate to cityview
           console.log(result);
           let cityName = result.geonames[0].toponymName;
-          history.push(`/CityView?city=${cityName}`)
+          history.push(`/cityPop?city=${cityName}`)
         } else {
           // Display error
           let errorBox = document.querySelector("#error-box")
@@ -60,8 +57,7 @@ const SearchView = (props) => {
 
   return (
     <div className="search-container">
-      <div className="description">{`SEARCH BY ${searchType.toUpperCase()}`}</div>
-      {/* <label htmlFor="search-field">Search</label> */}
+      <DescriptionLine text={`Search by ${searchType}`} />
       <input
         type="text"
         name="search-field"
@@ -73,7 +69,7 @@ const SearchView = (props) => {
       <button type="button" id="search-button" onClick={handleSearch}>
         <i className="fas fa-search"></i>
       </button>
-    </div>
+    </div >
   );
 };
 
