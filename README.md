@@ -1,3 +1,4 @@
+# CityPop
 This is an assessment work ordered by We Know IT student consulting. The app uses the [Geonames API](https://www.geonames.org/export/web-services.html) to display population numbers for cities. 
 
 The app is divided into 4 views:
