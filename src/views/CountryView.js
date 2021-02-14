@@ -12,57 +12,24 @@ const CountryView = () => {
     const getUrlCountry = () => {
         let urlQuery = window.location.search;
         let params = new URLSearchParams(urlQuery);
-        let countryName = params.get("country");
-        console.log("Got country:", countryName);
-        return countryName
-    }
-
-    const getCountryCodeFromName = async (countryName) => {
-        let query = `http://api.geonames.org/searchJSON?name=${countryName}&featureCode=PCLI&maxRows=10&username=ytterdorr`;
-        let countryCode = ""
-        await fetch(query)
-            .then((result) => result.json())
-            .then((data) => {
-                // Check if we got result
-                console.log(data);
-                if (data.geonames.length > 0) {
-                    let country = data.geonames[0]
-                    console.log(country.countryCode);
-                    countryCode = country.countryCode;
-                } else { // Error getting the country
-                    setError(`No country found, ${countryName}`)
-                }
-            })
-        return countryCode;
+        let countryId = params.get("country");
+        return countryId
     }
 
     const getCitiesFromCountryCode = async (countryCode) => {
         let query = `http://api.geonames.org/searchJSON?country=${countryCode}&featureClass=P&city=cities15000&maxRows=3&username=ytterdorr`;
-        let cities = [];
+        let cityList = [];
         await fetch(query)
             .then((result) => result.json())
             .then((data) => {
                 // Check if we got result
-                console.log(data);
                 if (data.geonames.length > 0) {
-                    cities = data.geonames;
+                    cityList = data.geonames;
                 } else { // Error getting the city
                     setError(`No cities found, ${countryCode}`)
                 }
             })
-        return cities
-    }
-
-    const generateCitiesList = async () => {
-        let countryName = getUrlCountry()
-        setCountryName(countryName);
-        let countryCode = await getCountryCodeFromName(countryName);
-        console.log("Country code: ", countryCode)
-        let cities = await getCitiesFromCountryCode(countryCode);
-
-        console.log(cities);
-        setCities(cities)
-        setLoading(false);
+        return cityList
     }
 
     const getItemByGeoId = async (geoId) => {
@@ -72,29 +39,25 @@ const CountryView = () => {
             .then((result) => result.json())
             .then((result) => { data = result });
         return data;
-
-
     }
 
     const getCitiesFromGeoId = async () => {
         let countryId = getUrlCountry();
         let countryData = await getItemByGeoId(countryId);
-        let cities = await getCitiesFromCountryCode(countryData.countryCode);
-        setCities(cities);
+        let cityList = await getCitiesFromCountryCode(countryData.countryCode);
+        setCountryName(countryData.name);
+        setCities(cityList);
         setLoading(false);
 
     }
 
     useEffect(() => {
-
-        // generateCitiesList();
         getCitiesFromGeoId();
     }, []);
 
 
     return (
         <div className="centered-column">
-
             { loading ? <DescriptionLine text="Loading..." /> :
                 <>
                     <DescriptionLine text={countryName} />
@@ -109,6 +72,5 @@ const CountryView = () => {
         </div>
     )
 }
-
 
 export default CountryView;
