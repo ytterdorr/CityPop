@@ -27,11 +27,16 @@ h1 {
   margin-top: 10vh;
 }
 
+.bordered-button {
+  border: 2px solid darkslategrey;
+  background-color: white;
+}
+
 .start-button {
   width: 30vw;
   height: 7rem;
   margin: 0.2rem;
-  border: 2px solid darkslategrey;
+
   font: 1.2rem verdana;
   background-color: white;
 }
@@ -42,20 +47,30 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
-.start-button:hover {
+.bordered-button:hover {
   border: 2px solid skyblue;
 }
 
 .small-text {
-  font-size: 0.5rem;
+  font-size: 0.8rem;
 }
 
 .population-display {
-  width: 12rem;
+  width: 14rem;
   border: 2px solid black;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0.2rem;
+  box-sizing: border-box;
+}
+
+.population-display .small-text {
+  margin-bottom: 0.3rem;
+}
+
+.population-number {
+  font-size: 1.5rem;
 }
 
 .centered-column {
@@ -64,3 +79,10 @@ h1 {
   align-items: center;
 }
 
+.city-button {
+  width: 12rem;
+  height: 3rem;
+  margin: 0.2rem;
+  font: 1.2rem verdana;
+
+}

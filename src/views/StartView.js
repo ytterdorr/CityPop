@@ -5,12 +5,12 @@ const StartView = () => {
   return (
     <div className="button-container">
       <Link to={{ pathname: "/search", state: { searchType: "city" } }}>
-        <button type="button" className="start-button">
+        <button type="button" className="start-button bordered-button">
           SEARCH BY CITY
         </button>
       </Link>
       <Link to={{ pathname: "/search", state: { searchType: "country" } }}>
-        <button type="button" className="start-button">
+        <button type="button" className="start-button bordered-button">
           SEARCH BY COUNTRY
         </button>
       </Link>

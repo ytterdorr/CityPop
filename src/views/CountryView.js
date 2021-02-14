@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import CityButton from "../components/CityButton";
 import DescriptionLine from "../components/DescriptionLine";
 
 const CountryView = () => {
@@ -76,9 +77,9 @@ const CountryView = () => {
             { loading ? <DescriptionLine text="Loading..." /> :
                 <>
                     <DescriptionLine text={countryName} />
-                    <div className="citylist-container">
+                    <div className="citylist-container centered-column">
                         {cities.map(city => {
-                            return <p>{city.name}</p>
+                            return <CityButton name={city.name} id={city.geonameId} />
                         })}
                     </div>
                 </>
