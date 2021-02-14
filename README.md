@@ -1,4 +1,35 @@
+This is an assessment work ordered by We Know IT student consulting. The app uses the [Geonames API](https://www.geonames.org/export/web-services.html) to display population numbers for cities. 
+
+The app is divided into 4 views:
+- **Start view**: Presents a choice between city search and country search.
+
+- **Search view**: As the country search and city search are very similar to the viewer, I made them the same view, with a prop "searchType" controlling which type of search. A successful search navigates to "country view" or "city view" respectively, with the respective geonames-ID as url-parameter. An unsuccessful search presents an error message.
+
+I chose not to put a loading message when checking if the city/country exist, but only on successful searches when the next view is loaded. This might break a requirement, but can be easily amended. 
+
+- **Country view**: Loads a country based on a geonames-ID from the url. Presents a clickable list of the country's three largest cities. A loading text is shown during the API call. 
+
+- **City view**: Loads a city based on a geonames-ID from the url. Presents the city name and the population. A loading text is shown during the API call. 
+
+Navigation between views is done using [react-router-dom](https://reactrouter.com/web/guides/quick-start). 
+
+# Environment setup
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+### Install node.js
+https://nodejs.org/en/
+
+### Clone the git repo
+`git clone https://github.com/ytterdorr/CityPop.git`
+### install dependencies
+Navigate into the cloned repository and run the command 
+#### `npm install` 
+which should install all the required packages. 
+
+#
+the following instructions are the default instructions from `create-react-app`.
+
 
 ## Available Scripts
 
