@@ -21,8 +21,8 @@ const SearchView = (props) => {
         if (result.geonames.length > 0) {
           // Navigate to cityview
           console.log(result);
-          let cityName = result.geonames[0].toponymName;
-          history.push(`/cityPop?city=${cityName}`)
+          let city = result.geonames[0];
+          history.push(`/cityPop?city=${city.geonameId}`)
         } else {
           // Display error
           let errorBox = document.querySelector("#error-box")
@@ -33,7 +33,21 @@ const SearchView = (props) => {
   };
 
   const countrySearch = (searchWord) => {
-    console.log(`Country Search: ${searchWord}`);
+    let query = `http://api.geonames.org/searchJSON?name=${searchWord}&featureCode=PCLI&maxRows=1&username=ytterdorr`;
+    fetch(query)
+      .then((result) => result.json())
+      .then((data) => {
+        // Check if we got result
+        console.log(data);
+        if (data.geonames.length > 0) {
+          let country = data.geonames[0]
+          console.log(country.name, country.countryCode, country.geonameId);
+          // let geonameId = country.geonameId
+          history.push(`/country?country=${country.geonameId}`);
+        } else { // Error getting the country
+          // setError(`No country found, ${countryName}`)
+        }
+      })
   };
 
   const handleSearch = () => {

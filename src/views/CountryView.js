@@ -54,9 +54,9 @@ const CountryView = () => {
     }
 
     const generateCitiesList = async () => {
-        let gotName = getUrlCountry()
-        setCountryName(gotName);
-        let countryCode = await getCountryCodeFromName(gotName);
+        let countryName = getUrlCountry()
+        setCountryName(countryName);
+        let countryCode = await getCountryCodeFromName(countryName);
         console.log("Country code: ", countryCode)
         let cities = await getCitiesFromCountryCode(countryCode);
 
@@ -65,9 +65,30 @@ const CountryView = () => {
         setLoading(false);
     }
 
+    const getItemByGeoId = async (geoId) => {
+        let query = `http://api.geonames.org/getJSON?geonameId=${geoId}&username=ytterdorr&style=short`;
+        let data;
+        await fetch(query)
+            .then((result) => result.json())
+            .then((result) => { data = result });
+        return data;
+
+
+    }
+
+    const getCitiesFromGeoId = async () => {
+        let countryId = getUrlCountry();
+        let countryData = await getItemByGeoId(countryId);
+        let cities = await getCitiesFromCountryCode(countryData.countryCode);
+        setCities(cities);
+        setLoading(false);
+
+    }
+
     useEffect(() => {
 
-        generateCitiesList();
+        // generateCitiesList();
+        getCitiesFromGeoId();
     }, []);
 
 
@@ -79,7 +100,7 @@ const CountryView = () => {
                     <DescriptionLine text={countryName} />
                     <div className="citylist-container centered-column">
                         {cities.map(city => {
-                            return <CityButton name={city.name} id={city.geonameId} />
+                            return <CityButton name={city.name} id={city.geonameId} key={city.geonameId} />
                         })}
                     </div>
                 </>

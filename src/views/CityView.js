@@ -11,9 +11,32 @@ const CityView = (props) => {
     const getUrlCity = async () => {
         let urlQuery = window.location.search;
         let params = new URLSearchParams(urlQuery);
-        let cityName = params.get("city");
-        console.log("Got city:", cityName);
-        return cityName
+        let cityId = params.get("city");
+        console.log("Got city:", cityId);
+        return cityId
+    }
+
+    const getCityName = async () => {
+        let geoId = await getUrlCity()
+        console.log("geoId", geoId)
+
+        let query = `http://api.geonames.org/getJSON?geonameId=${geoId}&username=ytterdorr&style=short`;
+        fetch(query)
+            .then((result) => result.json())
+            .then((data) => {
+                // Check if we got result
+                console.log("data", data);
+                if (data.fcl === "P") { // Got a city
+                    // Get population
+                    let city = data;
+                    console.log(`pop (${city.name}): ${city.population}`)
+                    setCityName(city.name);
+                    setPopulation(city.population)
+                    setLoading(false);
+                } else { // Error getting the city
+                    setError(`No city found`)
+                }
+            });
     }
 
     const numberWithSpaces = (number) => {
@@ -23,26 +46,7 @@ const CityView = (props) => {
 
     useEffect(() => {
 
-        const getCityName = async () => {
-            let gotName = await getUrlCity()
-            setCityName(gotName);
 
-            let query = `http://api.geonames.org/searchJSON?name_equals=${gotName}&featureClass=P&city=cities15000&maxRows=1&username=ytterdorr`;
-            fetch(query)
-                .then((result) => result.json())
-                .then((data) => {
-                    // Check if we got result
-                    if (data.geonames.length > 0) {
-                        // Get population
-                        let population = data.geonames[0].population;
-                        console.log(`pop (${gotName}): ${population}`)
-                        setPopulation(population)
-                        setLoading(false);
-                    } else { // Error getting the city
-                        setError(`No city found, ${cityName}`)
-                    }
-                });
-        }
 
         getCityName();
 
