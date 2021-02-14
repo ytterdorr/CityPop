@@ -34,7 +34,7 @@ const CityView = (props) => {
                         console.log(`pop (${gotName}): ${population}`)
                         setPopulation(population)
                         setLoading(false);
-                    } else {
+                    } else { // Error getting the city
                         setError(`No city found, ${cityName}`)
                     }
                 });

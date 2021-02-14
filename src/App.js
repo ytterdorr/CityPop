@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import StartView from "./views/StartView";
 import SearchView from "./views/SearchView";
 import CityView from "./views/CityView";
+import CountryView from "./views/CountryView";
 
 import "./css/reset.css";
 import "./css/main.css";
@@ -28,10 +29,11 @@ function App() {
               path="/search"
               render={(props) => <SearchView {...props}></SearchView>}
             ></Route>
-            <Route
-              path="/cityPop"
-            >
+            <Route path="/cityPop">
               <CityView />
+            </Route>
+            <Route path="/country">
+              <CountryView />
             </Route>
 
             <NotFound default></NotFound>
