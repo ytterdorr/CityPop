@@ -16,6 +16,10 @@ const CityView = (props) => {
         return cityName
     }
 
+    const numberWithSpaces = (number) => {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    }
+
 
     useEffect(() => {
 
@@ -54,7 +58,7 @@ const CityView = (props) => {
                     <DescriptionLine text={cityName} />
                     <div className="population-display">
                         <p className="small-text">Population</p>
-                        <p>{population}</p>
+                        <p className="population-number">{numberWithSpaces(population)}</p>
                     </div>
                 </>
             }
