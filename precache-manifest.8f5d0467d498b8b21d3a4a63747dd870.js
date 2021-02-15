@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a7f6b2c47cf48f9efbd72c9bca81f3c6",
+    "revision": "056b3989ee88dc0fbac6355288007efc",
     "url": "/CityPop/index.html"
   },
   {
-    "revision": "baf6fc26e1256171923b",
+    "revision": "2a23524a65b802f798c9",
     "url": "/CityPop/static/css/main.40b21f2d.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/CityPop/static/js/2.ba3e41bf.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "baf6fc26e1256171923b",
-    "url": "/CityPop/static/js/main.d0f7d5ec.chunk.js"
+    "revision": "2a23524a65b802f798c9",
+    "url": "/CityPop/static/js/main.839fdd2c.chunk.js"
   },
   {
     "revision": "881c997567230b64681e",
